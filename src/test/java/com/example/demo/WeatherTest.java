@@ -1,20 +1,19 @@
 package com.example.demo;
 
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
 public class WeatherTest {
-    public static void main(String[] args) throws IOException {
 
+    @Test
+    public void aVoid() throws IOException {
 
         Document doc = Jsoup.connect("http://www.weather.com.cn/weather/101010100.shtml").get();
-
 //        System.out.println(doc.data());
-
         Elements select = doc.select("body > div.con.today.clearfix > div.left.fl > div:nth-child(1)  > div.c7d > ul > li");
 
         for (String str :
@@ -25,8 +24,5 @@ public class WeatherTest {
             System.out.print("温度：" + strings[2] + "\t");
             System.out.println("风力：" + strings[3]);
         }
-
-
     }
-
 }
